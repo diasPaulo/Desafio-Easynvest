@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easynvest - O desafio</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+</head>
+<body onload="mostrarCadastro();">
+    <div class="container">
+        <nav>
+            <a href="./index.html">Novo Cadastro</a>
+            <a href="./dados.html" class="active-link">Dados Cadastrados</a>
+        </nav> 
+        <main>
+            <header>
+                <h1>Resultados</h1>
+            </header>
+            <div id="mostraCadastro"></div>
+            <button class="btn-cadastrar" id="btn-excluir" onclick="excluirTodoCadastro();">Excluir Dados</button>
+        </main>
+    </div>
+    <script src="./script/javascript.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easynvest - O desafio</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="./index.html" class="active-link">Novo Cadastro</a>
+            <a href="./dados.html">Dados Cadastrados</a>
+        </nav>
+        <main>
+            <header>
+                <h1>Cadastro</h1>
+            </header>
+            <form class="need-validation" novalidate>
+                <label for="nome">
+                    <p>Nome completo (sem abreviações)</p>
+                    <input type="text" id="nome" name="nome" pattern="[A-Za-z0-9 ]{3,}" placeholder="Nome completo (sem abreviações)" onchange="checarDados();" required>
+                    <div class="error-form" id="error-nome">Campo deve conter 3 caracteres ou mais</div>
+                </label>
+                
+                <label for="email">
+                    <p>E-mail</p>
+                    <input type="email" id="email" name="email" pattern="(\w\.?)+@[\w\.-]+\.\w{2,}" placeholder="E-mail" onchange="checarDados();" required>
+                    <div class="error-form" id="error-email">Esse não é um e-mail válido</div>
+                </label>
+                
+                <label for="cpf">
+                    <p>CPF</p>
+                    <input type="text" id="cpf" name="cpf" pattern="[0-9]{11}" placeholder="CPF" onchange="checarDados();" required>
+                    <div class="error-form" id="error-cpf">Esse CPF não é válido</div>
+                </label>
+                
+                <label for="telefone">
+                    <p>Telefone</p>
+                    <input type="tel" id="telefone" name="telefone" pattern="[0-9]{11}" placeholder="Telefone" onchange="checarDados();" required>
+                    <div class="error-form" id="error-phone">Esse Telefone não é válido</div>
+                </label>                
+
+                <button class="btn-cadastrar" id="btn-cadastrar" onclick="cadastrar();" disabled><div class="loading" id="loading"></div> <div class="txt-cadastrar" id="txt-cadastrar">Cadastrar</div></button>
+                <button class="btn-limpar" type="reset">Limpar</button>
+            </form>
+        </main>
+    </div>
+    <script src="./script/javascript.js"></script>
+</body>
+</html>
