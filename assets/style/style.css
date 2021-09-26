@@ -67,6 +67,12 @@ html, body{
     border-bottom: solid 2px var(--cadastrar);
 }
 
+.container nav a img{
+    border-radius: 4px;
+    height: 2rem;
+    width: auto;
+}
+
 .container main{
     display: flex;
     flex-direction: column;
@@ -242,10 +248,11 @@ html, body{
     border-top: 0.125rem solid #3498db;
     width: 2rem;
     height: 2rem;
-    -webkit-animation: spin .75s linear infinite;
+    -webkit-animation: spin .75s linear infinite; /* Safari */
     animation: spin .75s linear infinite;
 }
 
+/* Safari */
 @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
@@ -303,6 +310,10 @@ html, body{
 @media (max-width: 576px) {
     html, body{
         font-size: 1rem;
+    }
+
+    .container nav a img{
+        height: 1.75rem;
     }
 
     .container main input, .container main label {

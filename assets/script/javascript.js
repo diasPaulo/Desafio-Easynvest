@@ -1,20 +1,40 @@
-function cadastrar(){
-    let nome = document.getElementById("nome");
-    let cpf = document.getElementById("cpf");
-    let phone = document.getElementById("telefone");
-    let email = document.getElementById("email");
+function handler() {
+    if(this.status == 200) {
+        let dadosClientes = JSON.parse(this.responseText);
+        let listaClientes = [];
+        let listaLocalstorage = localStorage.getItem(0);
 
+        if (listaLocalstorage != []){
+            listaLocalstorage = JSON.parse(listaLocalstorage);
+            listaClientes = listaClientes.concat(listaLocalstorage);
+        }
+        for (const i in dadosClientes){
+            listaClientes.push(dadosClientes[i]);
+        }
+        localStorage.setItem(0,JSON.stringify(listaClientes));
+
+        alert("Os dados iniciais foram carregados com sucesso!");
+
+        location.reload();        
+    } else {
+        alert ("Erro ao carregar informações");
+    }
+}
+
+/* Carrega dados iniciais de clientes */
+function loadDataClient(){
+    let SN = confirm("Deseja carregar os dados iniciais?");
+    if (SN){
+        let client = new XMLHttpRequest();
+        client.onload = handler;
+        client.open("GET", "https://private-21e8de-rafaellucio.apiary-mock.com/users");
+        client.send();
+    }    
+}
+
+function cadastrar(){
     let loading = document.getElementById("loading");
     let txtCadastro = document.getElementById("txt-cadastrar");
-
-    let cadastro = {};
-
-    cadastro.name = nome.value;
-    cadastro.cpf = cpf.value;
-    cadastro.phone = phone.value;
-    cadastro.email = email.value;
-
-    localStorage.setItem(localStorage.length,JSON.stringify(cadastro)); 
 
     loading.style.display = "block";
     txtCadastro.style.display = "none";
@@ -24,11 +44,38 @@ function cadastrar(){
         txtCadastro.style.display = "block"; }
         , 1000);
 
-    e.preventDefault(); 
+    let nome = document.getElementById("nome");
+    let cpf = document.getElementById("cpf");
+    let phone = document.getElementById("telefone");
+    let email = document.getElementById("email");
+
+    let cadastro = {};
+
+    cadastro.name = nome.value;
+    cadastro.cpf = cpf.value;
+    cadastro.phone = phone.value;
+    cadastro.email = email.value;
+
+    let listaClientes = localStorage.getItem(0);
+
+    if (listaClientes != []){
+        listaClientes = JSON.parse(listaClientes);
+    }else{
+        listaClientes = [];
+    }
+    listaClientes.push(cadastro);
+
+    localStorage.setItem(0,JSON.stringify(listaClientes)); 
 }
 
 function mostrarCadastro(){
-    if (localStorage.length > 0){
+    let listaClientes = localStorage.getItem(0);
+
+    if (listaClientes != []){
+        listaClientes = JSON.parse(listaClientes);
+    }
+
+    if (listaClientes.length > 0){
         document.getElementById("btn-excluir").disabled = false;
         
         document.getElementById("mostraCadastro").innerHTML += `
@@ -40,16 +87,15 @@ function mostrarCadastro(){
             <p class="campoPhone">Telefone</p>
         </div>`;
 
-        for(var i in localStorage){
-            let cad = localStorage.getItem(i);
-            cad = JSON.parse(cad);
+        for (let i = 0; i < listaClientes.length; i++){
+            let cadastro = listaClientes[i];
             document.getElementById("mostraCadastro").innerHTML += `
             <div class="row">
                 <p class="excluir" onclick="excluirCadastro(` + i + `);"><img src="./images/delete.png" title="Deletar"></p>
-                <p class="campoNome">` + cad.name + `</p>
-                <p class="campoEmail">` + cad.email + `</p>
-                <p class="campoCpf">` + cad.cpf + `</p>
-                <p class="campoPhone">` + cad.phone + `</p>
+                <p class="campoNome">` + cadastro.name + `</p>
+                <p class="campoEmail">` + cadastro.email + `</p>
+                <p class="campoCpf">` + cadastro.cpf + `</p>
+                <p class="campoPhone">` + cadastro.phone + `</p>
             </div>`;
         }
     }else{
@@ -59,12 +105,17 @@ function mostrarCadastro(){
 }
 
 function excluirCadastro(item){
-    localStorage.removeItem(item);
+    let listaClientes = localStorage.getItem(0);
+    listaClientes = JSON.parse(listaClientes);
+
+    listaClientes.splice(item, 1);
+    localStorage.setItem(0,JSON.stringify(listaClientes));
+
     location.reload();
 }
 
 function excluirTodoCadastro(){
-    localStorage.clear();
+    localStorage.setItem(0,[]);
     location.reload();
 }
 
