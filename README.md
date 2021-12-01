@@ -1,4 +1,5 @@
 Projeto retirado do repositório [felipefialho/frontend-challenges](https://github.com/felipefialho/frontend-challenges) na qual possui uma lista de desafios Front-end.
+Conheça o projeto [aqui](./assets/index.html)
 
 # O desafio
 ![Easynvest](https://user-images.githubusercontent.com/8808895/46966234-81191d00-d083-11e8-8da3-63d1f12e4365.png)
