@@ -40,7 +40,7 @@
   <cite style="display: block; margin-left: 20px; padding: 10px; background-color: #ccc">GET <a href="https://private-21e8de-rafaellucio.apiary-mock.com/users" style="color: #000">https://private-21e8de-rafaellucio.apiary-mock.com/users</a></cite>
 
   <p>Response:</p>
-  <pre><code style="color: #fff">[
+  <pre><code style="color: #000">[
   {
     "name": "My name 1",
     "cpf": "04080757247",
@@ -64,7 +64,7 @@
   <p>A partir deste ponto utilizar o `localStorage/IndexedDB` para persistir localmente as informações.</p>
   <p>Save:</p>
 
-  <pre><code style="color: #fff">{
+  <pre><code style="color: #000">{
   "name": "My name 4",
   "cpf": "74668869066",
   "phone": "11987654321",
@@ -73,7 +73,7 @@
 
   <p>Lista local:</p>
 
-  <pre><code style="color: #fff">[
+  <pre><code style="color: #000">[
   {
     "name": "My name 1",
     "cpf": "04080757247",
