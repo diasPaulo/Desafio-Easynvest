@@ -162,6 +162,7 @@
   <h3>Botão Loading:</h3>
 
   <img src="./images/button_enable_loading.png">
+  
   <figcaption style="font-style: italic;">*Criar animação de loading ao clicar no submit</figcaption>
 
   <h3>Exemplo Final</h3>
